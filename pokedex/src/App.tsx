@@ -67,6 +67,7 @@ function App() {
                     inputIsValid={pokemonIsValid}
                 />
                 <Pokemon
+                    stats={pokemonRetrieved.stats}
                     sprites={pokemonRetrieved.sprites}
                     name={pokemonRetrieved.name}
                 />
