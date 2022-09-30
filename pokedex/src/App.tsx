@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from "react";
 import Pokemon from "./components/pokemon/Pokemon";
 import PokemonObject from "./components/pokemon/PokemonObjectType";
+import Search from "./components/Search/Search";
 import useInput from "./hooks/use-input";
 function App() {
     const [pokemonRetrieved, setPokemonRetrieved] = useState<
@@ -37,17 +38,15 @@ function App() {
 
     const pokemon = async () => {
         const response = await fetch(
-            `https://pokeapi.co/api/v2/pokemon/${pokemonSearch}/`,
+            `https://pokeapi.co/api/v2/pokemon/${pokemonSearch.trim()}/`,
             {
                 method: "GET",
             }
         );
         const data = await response.json();
-        console.log(data);
 
         setPokemonRetrieved(data);
-        console.log("retrieved");
-        console.log(pokemonRetrieved);
+        resetPokemon();
     };
 
     const handleFormSubmit = async (event: React.FormEvent) => {
@@ -57,20 +56,15 @@ function App() {
 
     return (
         <div className="App">
-            <Pokemon sprites={pokemonRetrieved.sprites} />
-            <form onSubmit={handleFormSubmit}>
-                <div>
-                    <label>
-                        <span>Search</span>
-                        <input
-                            type="text"
-                            onChange={pokemonChangeHandler}
-                            value={pokemonSearch}
-                        />
-                    </label>
-                </div>
-                <button type="submit">Submit</button>
-            </form>
+            <Search
+                parentCallback={handleFormSubmit}
+                inputChangeHandler={pokemonChangeHandler}
+                inputValue={pokemonSearch}
+            />
+            <Pokemon
+                sprites={pokemonRetrieved.sprites}
+                name={pokemonRetrieved.name}
+            />
         </div>
     );
 }
