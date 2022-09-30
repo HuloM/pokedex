@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import Pokemon from "./components/pokemon/Pokemon";
 import PokemonObject from "./components/pokemon/PokemonObjectType";
+import useInput from "./hooks/use-input";
 function App() {
     const [pokemonRetrieved, setPokemonRetrieved] = useState<
         Partial<PokemonObject>
@@ -20,9 +21,23 @@ function App() {
         weight: 0,
     });
 
-    const pokemon = async (pokemonID: string) => {
+    const {
+        enteredInput: pokemonSearch,
+        enteredInputIsValid: pokemonIsValid,
+        inputIsInvalid: pokemonIsInvalid,
+        inputBlurHandler: pokemonBlurHandler,
+        inputChangeHandler: pokemonChangeHandler,
+        resetOnFormSubmitHandler: resetPokemon,
+    } = useInput(
+        useCallback(
+            (input: string) => input.trim() !== "" && input.length > 0,
+            []
+        )
+    );
+
+    const pokemon = async () => {
         const response = await fetch(
-            `https://pokeapi.co/api/v2/pokemon/${pokemonID}/`,
+            `https://pokeapi.co/api/v2/pokemon/${pokemonSearch}/`,
             {
                 method: "GET",
             }
@@ -34,11 +49,28 @@ function App() {
         console.log("retrieved");
         console.log(pokemonRetrieved);
     };
-    pokemon("1");
+
+    const handleFormSubmit = async (event: React.FormEvent) => {
+        event.preventDefault();
+        pokemon();
+    };
 
     return (
         <div className="App">
             <Pokemon sprites={pokemonRetrieved.sprites} />
+            <form onSubmit={handleFormSubmit}>
+                <div>
+                    <label>
+                        <span>Search</span>
+                        <input
+                            type="text"
+                            onChange={pokemonChangeHandler}
+                            value={pokemonSearch}
+                        />
+                    </label>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
         </div>
     );
 }
