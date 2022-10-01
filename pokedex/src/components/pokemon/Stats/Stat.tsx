@@ -1,4 +1,3 @@
-import { Col, Row } from "react-bootstrap";
 import StatProp from "./StatPropType";
 
 function Stat(props: StatProp) {

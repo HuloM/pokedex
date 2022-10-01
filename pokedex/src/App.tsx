@@ -66,11 +66,15 @@ function App() {
                     inputValue={pokemonSearch}
                     inputIsValid={pokemonIsValid}
                 />
-                <Pokemon
-                    stats={pokemonRetrieved.stats}
-                    sprites={pokemonRetrieved.sprites}
-                    name={pokemonRetrieved.name}
-                />
+                {pokemonRetrieved.id > 0 && (
+                    <Pokemon
+                        stats={pokemonRetrieved.stats}
+                        sprites={pokemonRetrieved.sprites}
+                        name={pokemonRetrieved.name}
+                        id={pokemonRetrieved.id}
+                        types={pokemonRetrieved.types}
+                    />
+                )}
             </Stack>
         </div>
     );
