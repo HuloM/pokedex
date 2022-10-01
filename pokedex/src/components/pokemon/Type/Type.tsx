@@ -81,7 +81,6 @@ function Type(props: TypeProp) {
             break;
     }
 
-    console.log("type: " + type, props.type.name);
     return (
         <div>
             <img src={type} alt="" />
