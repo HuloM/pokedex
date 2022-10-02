@@ -1,5 +1,5 @@
 import TypeProp from "./TypingPropType";
-// TODO Eventually implement webpack to avoid importting all images
+// TODO Eventually implement webpack to avoid importing all images
 import bug from "./pokemonTypes/bug.PNG";
 import dark from "./pokemonTypes/dark.PNG";
 import dragon from "./pokemonTypes/dragon.PNG";
@@ -19,71 +19,30 @@ import rock from "./pokemonTypes/rock.PNG";
 import steel from "./pokemonTypes/steel.PNG";
 import water from "./pokemonTypes/water.PNG";
 function Type(props: TypeProp) {
-    var type: any;
-
-    switch (props.type.name) {
-        case "bug":
-            type = bug;
-            break;
-        case "dark":
-            type = dark;
-            break;
-        case "dragon":
-            type = dragon;
-            break;
-        case "electric":
-            type = electric;
-            break;
-        case "fairy":
-            type = fairy;
-            break;
-        case "fighting":
-            type = fighting;
-            break;
-        case "fire":
-            type = fire;
-            break;
-        case "flying":
-            type = flying;
-            break;
-        case "ghost":
-            type = ghost;
-            break;
-        case "grass":
-            type = grass;
-            break;
-        case "ground":
-            type = ground;
-            break;
-        case "ice":
-            type = ice;
-            break;
-        case "normal":
-            type = normal;
-            break;
-        case "poison":
-            type = poison;
-            break;
-        case "psychic":
-            type = psychic;
-            break;
-        case "rock":
-            type = rock;
-            break;
-        case "steel":
-            type = steel;
-            break;
-        case "water":
-            type = water;
-            break;
-        default:
-            console.log("Unknown type: " + type);
-            break;
-    }
+    let types: object = {
+        bug: bug,
+        dark: dark,
+        dragon: dragon,
+        electric: electric,
+        fairy: fairy,
+        fighting: fighting,
+        fire: fire,
+        flying: flying,
+        ghost: ghost,
+        grass: grass,
+        ground: ground,
+        ice: ice,
+        normal: normal,
+        poison: poison,
+        psychic: psychic,
+        rock: rock,
+        steel: steel,
+        water: water,
+    };
 
     return (
         <div>
-            <img src={type} alt="" />
+            <img src={types[props.type.name as keyof typeof types]} alt="" />
         </div>
     );
 }

@@ -1,9 +1,9 @@
-import Sprite from "./Sprites/Sprite";
+import Sprite from "./Sprite/Sprite";
 import PokemonProp from "./PokemonPropType";
 import Container from "react-bootstrap/Container";
 import { Row, Col } from "react-bootstrap";
-import Stat from "./Stats/Stat";
-import StatObject from "./Stats/StatObjectType";
+import Stat from "./Stat/Stat";
+import StatObject from "./Stat/StatObjectType";
 import Type from "./Type/Type";
 function Pokemon(props: PokemonProp): any {
     const sprites = props.sprites;
