@@ -4,6 +4,7 @@ interface PokemonProp {
     name: string;
     id: number;
     types: any[];
+    moves: any[];
 }
 
 export default PokemonProp;

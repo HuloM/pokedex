@@ -58,7 +58,7 @@ function App() {
     };
 
     return (
-        <div className="App bg-primary h-100 bg-opacity-50 min-vh-100">
+        <div className="App bg-primary bg-opacity-50 min-vh-100">
             <Stack gap={3}>
                 <Search
                     parentCallback={handleFormSubmit}
@@ -73,6 +73,7 @@ function App() {
                         name={pokemonRetrieved.name}
                         id={pokemonRetrieved.id}
                         types={pokemonRetrieved.types}
+                        moves={pokemonRetrieved.moves}
                     />
                 )}
             </Stack>

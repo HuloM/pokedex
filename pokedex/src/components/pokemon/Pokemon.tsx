@@ -5,12 +5,16 @@ import { Row, Col } from "react-bootstrap";
 import Stat from "./Stat/Stat";
 import StatObject from "./Stat/StatObjectType";
 import Type from "./Type/Type";
+import MoveObject from "./Move/MoveObjectType";
+import Move from "./Move/Move";
+import MoveProp from "./Move/MovePropType";
 function Pokemon(props: PokemonProp): any {
     const sprites = props.sprites;
     const stats = props.stats;
     const pokemonName = props.name;
     const id = props.id;
     const types = props.types;
+    const moves = props.moves;
 
     return (
         <div>
@@ -31,11 +35,14 @@ function Pokemon(props: PokemonProp): any {
                         )}
                     </Row>
                 </div>
-                <Row className="shadow-lg justify-content-md-center bg-dark rounded mx-auto w-75">
+                <Row
+                    md={Object.values(sprites).length}
+                    className="shadow-lg justify-content-md-center bg-dark rounded mx-auto w-75 p-3"
+                >
                     {Object.values(sprites).map(
                         (spriteURL: string) =>
                             spriteURL !== null && (
-                                <Col md="auto">
+                                <Col md="auto" className="p-3 mx-auto px-auto">
                                     <Sprite
                                         sprite={spriteURL}
                                         key={spriteURL}
@@ -54,6 +61,14 @@ function Pokemon(props: PokemonProp): any {
                             )
                     )}
                 </Row>
+                <div className="shadow-lg justify-content-md-center text-bg-dark bg-opacity-100 rounded mx-auto w-75 mt-2 p-2">
+                    {Object.values(moves).map(
+                        (move: MoveProp) =>
+                            move !== null && (
+                                <Move move={move.move} key={move.move.name} />
+                            )
+                    )}
+                </div>
             </Container>
         </div>
     );
