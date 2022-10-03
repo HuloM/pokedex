@@ -18,8 +18,8 @@ function Pokemon(props: PokemonProp): any {
 
     return (
         <div>
-            <Container className="md mx-auto">
-                <div className="justify-content-md-center text-bg-dark bg-opacity-100 mx-auto rounded mb-2 w-50 fw-bold fs-3 text-center">
+            <Container className="md mx-auto" fluid>
+                <div className="justify-content-center text-bg-dark bg-opacity-100 mx-auto rounded mb-2 w-50 fw-bold fs-3 text-center">
                     <Row className="w-75 justify-content-md-center mx-auto">
                         <Col>{pokemonName}</Col>
                         <Col>#{String(id).padStart(4, "0")} </Col>
@@ -35,14 +35,15 @@ function Pokemon(props: PokemonProp): any {
                         )}
                     </Row>
                 </div>
-                <Row
-                    md={Object.values(sprites).length}
-                    className="shadow-lg justify-content-md-center bg-dark rounded mx-auto w-75 p-3"
-                >
+                <Row className="shadow-lg justify-content-md-center bg-dark rounded m-auto w-75 p-3">
                     {Object.values(sprites).map(
                         (spriteURL: string) =>
-                            spriteURL !== null && (
-                                <Col md="auto" className="p-3 mx-auto px-auto">
+                            spriteURL !== null &&
+                            typeof spriteURL === "string" && (
+                                <Col
+                                    md="auto"
+                                    className="p-3 d-inline-block align-middle float-none"
+                                >
                                     <Sprite
                                         sprite={spriteURL}
                                         key={spriteURL}
@@ -61,7 +62,7 @@ function Pokemon(props: PokemonProp): any {
                             )
                     )}
                 </Row>
-                <div className="shadow-lg justify-content-md-center text-bg-dark bg-opacity-100 rounded mx-auto w-75 mt-2 p-2">
+                <div className="shadow-lg justify-content-md-center text-bg-dark bg-opacity-100 rounded mx-auto w-auto mt-2 p-2">
                     {Object.values(moves).map(
                         (move: MoveProp) =>
                             move !== null && (

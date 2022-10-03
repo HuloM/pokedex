@@ -6,6 +6,7 @@ interface MoveData {
     type?: TypeObject;
     pp?: number;
     accuracy?: number;
+    power?: number;
 }
 
 export default MoveData;

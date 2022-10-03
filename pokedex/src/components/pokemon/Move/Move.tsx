@@ -33,13 +33,12 @@ function Move(prop: MoveProp) {
             const data = await response.json();
 
             setMoveData(data);
-            console.log(data);
         };
         getMoveData();
     }, []);
 
     return (
-        <Row className="rounded text-bg-light w-auto h-auto my-1 mx-3 text-center bg-opacity-75">
+        <Row className="rounded text-bg-light w-auto h-auto my-2 mx-2 text-center bg-opacity-75 py-1">
             <Col>{prop.move.name}</Col>
             <Col>
                 {moveData.type != null && (
@@ -57,6 +56,9 @@ function Move(prop: MoveProp) {
                     alt=""
                 />
             </Col>
+            <Col>{moveData.power && `Power: ${moveData.power}`}</Col>
+            <Col>{moveData.pp && `PP: ${moveData.pp}`}</Col>
+            <Col>{moveData.accuracy && `Accuracy: ${moveData.accuracy}`}</Col>
         </Row>
     );
 }
