@@ -3,6 +3,9 @@ import { Col, Row } from "react-bootstrap";
 import Type from "../Type/Type";
 import MoveData from "./MoveDataType";
 import MoveProp from "./MovePropType";
+import status from "./MoveCategory/status.PNG";
+import special from "./MoveCategory/special.PNG";
+import physical from "./MoveCategory/physical.PNG";
 
 function Move(prop: MoveProp) {
     const [moveData, setMoveData] = useState<Partial<MoveData>>({
@@ -15,6 +18,12 @@ function Move(prop: MoveProp) {
         pp: 0,
         accuracy: 0,
     });
+
+    const moveCategories = {
+        status: status,
+        special: special,
+        physical: physical,
+    };
 
     useEffect(() => {
         const getMoveData = async function () {
@@ -37,7 +46,17 @@ function Move(prop: MoveProp) {
                     <Type slot={1} type={moveData.type}></Type>
                 )}
             </Col>
-            <Col>{moveData.damage_class?.name}</Col>
+            <Col>
+                <img
+                    src={
+                        moveCategories[
+                            moveData.damage_class
+                                ?.name as keyof typeof moveCategories
+                        ]
+                    }
+                    alt=""
+                />
+            </Col>
         </Row>
     );
 }
