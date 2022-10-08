@@ -37,7 +37,6 @@ function Move(prop: MoveProp) {
         getMoveData();
     }, []);
 
-    console.log(prop.move);
     return (
         <Row className="rounded text-bg-light w-auto h-auto my-2 mx-2 text-center bg-opacity-75 py-1">
             <Col>{prop.move.name}</Col>
