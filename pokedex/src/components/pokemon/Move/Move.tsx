@@ -37,6 +37,7 @@ function Move(prop: MoveProp) {
         getMoveData();
     }, []);
 
+    console.log(prop.move);
     return (
         <Row className="rounded text-bg-light w-auto h-auto my-2 mx-2 text-center bg-opacity-75 py-1">
             <Col>{prop.move.name}</Col>
@@ -56,9 +57,11 @@ function Move(prop: MoveProp) {
                     alt=""
                 />
             </Col>
-            <Col>{moveData.power && `Power: ${moveData.power}`}</Col>
-            <Col>{moveData.pp && `PP: ${moveData.pp}`}</Col>
-            <Col>{moveData.accuracy && `Accuracy: ${moveData.accuracy}`}</Col>
+            <Col>{moveData.power !== null && `Power: ${moveData.power}`}</Col>
+            <Col>{moveData.pp !== null && `PP: ${moveData.pp}`}</Col>
+            <Col>
+                {moveData.accuracy !== null && `Accuracy: ${moveData.accuracy}`}
+            </Col>
         </Row>
     );
 }
