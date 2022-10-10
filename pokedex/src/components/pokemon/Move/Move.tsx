@@ -7,7 +7,7 @@ import status from "./MoveCategory/status.PNG";
 import special from "./MoveCategory/special.PNG";
 import physical from "./MoveCategory/physical.PNG";
 
-function Move(prop: MoveProp) {
+function Move(props: MoveProp) {
     const [moveData, setMoveData] = useState<Partial<MoveData>>({
         damage_class: {
             name: "",
@@ -27,7 +27,7 @@ function Move(prop: MoveProp) {
 
     useEffect(() => {
         const getMoveData = async function () {
-            const response = await fetch(prop.move.url, {
+            const response = await fetch(props.move.url, {
                 method: "GET",
             });
             const data = await response.json();
@@ -39,7 +39,7 @@ function Move(prop: MoveProp) {
 
     return (
         <Row className="rounded text-bg-light w-auto h-auto my-2 mx-2 text-center bg-opacity-75 py-1">
-            <Col>{prop.move.name}</Col>
+            <Col>{props.move.name}</Col>
             <Col>
                 {moveData.type != null && (
                     <Type slot={1} type={moveData.type}></Type>

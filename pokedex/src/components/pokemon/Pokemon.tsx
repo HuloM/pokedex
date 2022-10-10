@@ -8,6 +8,8 @@ import Type from "./Type/Type";
 import MoveObject from "./Move/MoveObjectType";
 import Move from "./Move/Move";
 import MoveProp from "./Move/MovePropType";
+import Ability from "./Ability/Ability";
+import AbilityObject from "./Ability/AbilityObjectType";
 function Pokemon(props: PokemonProp): any {
     const sprites = props.sprites;
     const stats = props.stats;
@@ -15,7 +17,7 @@ function Pokemon(props: PokemonProp): any {
     const id = props.id;
     const types = props.types;
     const moves = props.moves;
-
+    const abilities = props.abilities;
     return (
         <div>
             <Container className="md mx-auto" fluid>
@@ -52,16 +54,34 @@ function Pokemon(props: PokemonProp): any {
                             )
                     )}
                 </Row>
-                <div className="shadow-lg text-bg-dark bg-opacity-100 rounded mx-auto w-25 mt-2">
-                    {Object.values(stats).map(
-                        (stat: StatObject) =>
-                            stat !== null && (
-                                <Row>
-                                    <Stat stat={stat} key={stat.stat.name} />
-                                </Row>
-                            )
-                    )}
-                </div>
+                <Row className="rounded mx-auto w-75 mt-2">
+                    <Col className="shadow-lg text-bg-dark bg-opacity-100 rounded mx-auto w-25 mt-2 me-1 p-1">
+                        {Object.values(stats).map(
+                            (stat: StatObject) =>
+                                stat !== null && (
+                                    <Row>
+                                        <Stat
+                                            stat={stat}
+                                            key={stat.stat.name}
+                                        />
+                                    </Row>
+                                )
+                        )}
+                    </Col>
+                    <Col className="shadow-lg text-bg-dark bg-opacity-100 rounded mx-auto w-25 mt-2 p-1">
+                        {Object.values(abilities).map(
+                            (ability: AbilityObject) =>
+                                ability !== null && (
+                                    <Row>
+                                        <Ability
+                                            ability={ability}
+                                            key={ability.ability.name}
+                                        />
+                                    </Row>
+                                )
+                        )}
+                    </Col>
+                </Row>
                 <div className="shadow-lg justify-content-md-center text-bg-dark bg-opacity-100 rounded mx-auto w-auto mt-2 p-2">
                     {Object.values(moves).map(
                         (move: MoveProp) =>

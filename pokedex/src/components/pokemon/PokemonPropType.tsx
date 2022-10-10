@@ -5,6 +5,7 @@ interface PokemonProp {
     id: number;
     types: any[];
     moves: any[];
+    abilities: any[];
 }
 
 export default PokemonProp;

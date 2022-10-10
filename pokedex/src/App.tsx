@@ -74,6 +74,7 @@ function App() {
                         id={pokemonRetrieved.id}
                         types={pokemonRetrieved.types}
                         moves={pokemonRetrieved.moves}
+                        abilities={pokemonRetrieved.abilities}
                     />
                 )}
             </Stack>
