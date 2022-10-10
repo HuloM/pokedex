@@ -52,16 +52,16 @@ function Pokemon(props: PokemonProp): any {
                             )
                     )}
                 </Row>
-                <Row className="shadow-lg justify-content-md-center text-bg-dark bg-opacity-100 rounded mx-auto w-75 mt-2">
+                <div className="shadow-lg text-bg-dark bg-opacity-100 rounded mx-auto w-25 mt-2">
                     {Object.values(stats).map(
                         (stat: StatObject) =>
                             stat !== null && (
-                                <Col md="auto">
+                                <Row>
                                     <Stat stat={stat} key={stat.stat.name} />
-                                </Col>
+                                </Row>
                             )
                     )}
-                </Row>
+                </div>
                 <div className="shadow-lg justify-content-md-center text-bg-dark bg-opacity-100 rounded mx-auto w-auto mt-2 p-2">
                     {Object.values(moves).map(
                         (move: MoveProp) =>

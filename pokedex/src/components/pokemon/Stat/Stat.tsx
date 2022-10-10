@@ -1,12 +1,19 @@
 import StatProp from "./StatPropType";
+import ProgressBar from "react-bootstrap/ProgressBar";
 
 function Stat(props: StatProp) {
     const stat = props.stat;
 
     return (
-        <div className="mx-auto text-center fs-5">
-            <p className="">{stat.stat.name}:</p>
-            <p className="">{stat.base_stat}</p>
+        <div className="fs-5">
+            {stat.stat.name}:
+            <ProgressBar
+                now={stat.base_stat}
+                max={255}
+                label={stat.base_stat}
+                variant="danger"
+                className="fs-5 w-auto text-center"
+            />
         </div>
     );
 }
