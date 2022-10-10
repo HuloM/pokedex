@@ -33,13 +33,10 @@ function Ability(props: AbilityProp) {
     }, []);
 
     return (
-        <div className="rounded w-auto mx-1 h-auto fs-5">
+        <div className="w-auto h-auto fs-5">
             <b>{ability.ability.name}</b>
             {ability.is_hidden && (
-                <span>
-                    <span>: </span>
-                    <span className="text-success">Hidden ability</span>
-                </span>
+                <span className="text-primary"> (Hidden ability)</span>
             )}
             <p>
                 {abilityData.flavor_text_entries &&

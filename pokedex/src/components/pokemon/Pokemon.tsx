@@ -55,7 +55,8 @@ function Pokemon(props: PokemonProp): any {
                     )}
                 </Row>
                 <Row className="rounded mx-auto w-75 mt-2">
-                    <Col className="shadow-lg text-bg-dark bg-opacity-100 rounded mx-auto w-25 mt-2 me-1 p-1">
+                    <Col className="shadow-lg text-bg-dark bg-opacity-100 rounded mx-auto w-25 mt-2 me-1 p-1 fs-4">
+                        <span className="fs-4">Base Stats</span>
                         {Object.values(stats).map(
                             (stat: StatObject) =>
                                 stat !== null && (
@@ -69,6 +70,7 @@ function Pokemon(props: PokemonProp): any {
                         )}
                     </Col>
                     <Col className="shadow-lg text-bg-dark bg-opacity-100 rounded mx-auto w-25 mt-2 p-1">
+                        <span className="fs-4">Abilities</span>
                         {Object.values(abilities).map(
                             (ability: AbilityObject) =>
                                 ability !== null && (

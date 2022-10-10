@@ -11,8 +11,8 @@ function Stat(props: StatProp) {
                 now={stat.base_stat}
                 max={255}
                 label={stat.base_stat}
-                variant="danger"
-                className="fs-5 w-auto text-center"
+                variant="primary"
+                className="fs-5 w-auto h-auto"
             />
         </div>
     );
