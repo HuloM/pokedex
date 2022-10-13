@@ -17,6 +17,10 @@ function Move(props: MoveProp) {
         },
         pp: 0,
         accuracy: 0,
+        flavor_text_entries: {
+            flavor_text: "",
+            language: {},
+        },
     });
 
     const moveCategories = {
@@ -31,6 +35,12 @@ function Move(props: MoveProp) {
                 method: "GET",
             });
             const data = await response.json();
+            for (const entry of data.flavor_text_entries) {
+                if (entry.language.name === "en") {
+                    data.flavor_text_entries = entry;
+                    break;
+                }
+            }
 
             setMoveData(data);
         };
@@ -38,30 +48,41 @@ function Move(props: MoveProp) {
     }, []);
 
     return (
-        <Row className="rounded text-bg-light w-auto h-auto my-2 mx-2 text-center bg-opacity-75 py-1">
-            <Col>{props.move.name}</Col>
-            <Col>
-                {moveData.type != null && (
-                    <Type slot={1} type={moveData.type}></Type>
-                )}
-            </Col>
-            <Col>
-                <img
-                    src={
-                        moveCategories[
-                            moveData.damage_class
-                                ?.name as keyof typeof moveCategories
-                        ]
-                    }
-                    alt=""
-                />
-            </Col>
-            <Col>{moveData.power !== null && `Power: ${moveData.power}`}</Col>
-            <Col>{moveData.pp !== null && `PP: ${moveData.pp}`}</Col>
-            <Col>
-                {moveData.accuracy !== null && `Accuracy: ${moveData.accuracy}`}
-            </Col>
-        </Row>
+        <div className="rounded text-bg-light w-auto h-auto my-2 mx-2 text-center bg-opacity-75 py-1">
+            <Row>
+                <Col>{props.move.name}</Col>
+                <Col>
+                    {moveData.type != null && (
+                        <Type slot={1} type={moveData.type}></Type>
+                    )}
+                </Col>
+                <Col>
+                    <img
+                        src={
+                            moveCategories[
+                                moveData.damage_class
+                                    ?.name as keyof typeof moveCategories
+                            ]
+                        }
+                        alt=""
+                    />
+                </Col>
+                <Col>
+                    {moveData.power !== null && `Power: ${moveData.power}`}
+                </Col>
+                <Col>{moveData.pp !== null && `PP: ${moveData.pp}`}</Col>
+                <Col>
+                    {moveData.accuracy !== null &&
+                        `Accuracy: ${moveData.accuracy}`}
+                </Col>
+            </Row>
+            <Row className="py-1">
+                <Col>
+                    <b>Description: </b>
+                    {moveData.flavor_text_entries?.flavor_text}
+                </Col>
+            </Row>
+        </div>
     );
 }
 

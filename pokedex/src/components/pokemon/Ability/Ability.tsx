@@ -26,7 +26,6 @@ function Ability(props: AbilityProp) {
                     break;
                 }
             }
-            console.log(data);
             setAbilityData(data);
         };
         getAbilityData();

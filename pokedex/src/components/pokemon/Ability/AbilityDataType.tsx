@@ -1,4 +1,4 @@
-import FlavorText from "./FlavorTextType";
+import FlavorText from "../FlavorTextType";
 
 interface AbilityData {
     flavor_text_entries: FlavorText;
